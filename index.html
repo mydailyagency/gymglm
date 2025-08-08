@@ -1,0 +1,2899 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyDailyAgency Strength Program</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #1a237e;
+            --secondary-color: #3949ab;
+            --accent-color: #f44336;
+            --light-color: #e8eaf6;
+            --dark-color: #1a237e;
+            --success-color: #4caf50;
+            --warning-color: #ff9800;
+            --info-color: #2196f3;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-color);
+            background-color: #f5f7fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 10px;
+            color: var(--secondary-color);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+
+        nav ul li a:hover {
+            color: var(--secondary-color);
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(26, 35, 126, 0.8), rgba(26, 35, 126, 0.8)), url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+            padding: 5rem 0;
+            margin-bottom: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 3rem 0;
+            margin-bottom: 2rem;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            text-align: center;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--secondary-color);
+        }
+
+        /* 1RM Input Section */
+        .input-section {
+            background-color: var(--light-color);
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .input-section h2 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .input-group {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 1.5rem;
+        }
+
+        .input-field {
+            flex: 1;
+            min-width: 200px;
+            max-width: 300px;
+        }
+
+        .input-field label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+            color: var(--primary-color);
+        }
+
+        .input-field input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: var(--secondary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-color);
+        }
+
+        .btn-success {
+            background-color: var(--success-color);
+        }
+
+        .btn-success:hover {
+            background-color: #388e3c;
+        }
+
+        .btn-danger {
+            background-color: var(--accent-color);
+        }
+
+        .btn-danger:hover {
+            background-color: #d32f2f;
+        }
+
+        /* Tabs */
+        .tabs {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            background-color: #f1f1f1;
+            border: 1px solid #ddd;
+            border-bottom: none;
+            margin-right: 5px;
+            border-radius: 5px 5px 0 0;
+            transition: background-color 0.3s;
+        }
+
+        .tab.active {
+            background-color: var(--secondary-color);
+            color: white;
+            border-color: var(--secondary-color);
+        }
+
+        .tab:hover:not(.active) {
+            background-color: #e1e1e1;
+        }
+
+        .tab-content {
+            display: none;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-top: none;
+            border-radius: 0 0 5px 5px;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #e9f7fe;
+        }
+
+        /* Cards */
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .card-title i {
+            margin-right: 10px;
+            color: var(--secondary-color);
+        }
+
+        /* Exercise Cards */
+        .exercise-card {
+            background-color: #f9f9f9;
+            border-left: 4px solid var(--secondary-color);
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .exercise-name {
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            color: var(--primary-color);
+        }
+
+        .exercise-details {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .exercise-sets, .exercise-reps, .exercise-rpe {
+            margin-right: 15px;
+        }
+
+        .exercise-weight {
+            font-weight: 700;
+            color: var(--secondary-color);
+        }
+
+        /* Phase Indicators */
+        .phase-indicator {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .phase-accumulation {
+            background-color: var(--info-color);
+            color: white;
+        }
+
+        .phase-intensification {
+            background-color: #9c27b0;
+            color: white;
+        }
+
+        .phase-peak {
+            background-color: var(--accent-color);
+            color: white;
+        }
+
+        .phase-deload {
+            background-color: var(--warning-color);
+            color: white;
+        }
+
+        .phase-test {
+            background-color: var(--success-color);
+            color: white;
+        }
+
+        /* Info Boxes */
+        .info-box {
+            background-color: #e8eaf6;
+            border-left: 4px solid var(--secondary-color);
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .info-box-title {
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: var(--primary-color);
+        }
+
+        .warning-box {
+            background-color: #fff3e0;
+            border-left: 4px solid var(--warning-color);
+        }
+
+        .success-box {
+            background-color: #e8f5e9;
+            border-left: 4px solid var(--success-color);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 2rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+            }
+
+            nav ul {
+                margin-top: 15px;
+            }
+
+            nav ul li {
+                margin: 0 10px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .tabs {
+                flex-direction: column;
+            }
+
+            .tab {
+                margin-right: 0;
+                margin-bottom: 5px;
+                border-radius: 5px;
+            }
+
+            .exercise-details {
+                flex-direction: column;
+            }
+
+            .exercise-sets, .exercise-reps, .exercise-rpe, .exercise-weight {
+                margin-right: 0;
+                margin-bottom: 5px;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            header, nav, .tabs, .btn, .input-section, footer {
+                display: none;
+            }
+
+            body {
+                background-color: white;
+                font-size: 12pt;
+            }
+
+            .container {
+                max-width: 100%;
+                padding: 0;
+            }
+
+            section {
+                page-break-inside: avoid;
+                box-shadow: none;
+                border: 1px solid #ddd;
+            }
+
+            .tab-content {
+                display: block !important;
+                border: none;
+                padding: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <i class="fas fa-dumbbell"></i>
+                <span>MyDailyAgency Strength Program</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#overview">Overview</a></li>
+                    <li><a href="#input">1RM Input</a></li>
+                    <li><a href="#program">Program</a></li>
+                    <li><a href="#exercises">Exercises</a></li>
+                    <li><a href="#recovery">Recovery</a></li>
+                    <li><a href="#nutrition">Nutrition</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>MyDailyAgency 12-Week Hybrid Strength Program</h1>
+            <p>A scientifically-designed program combining top sets for strength days and regular sets for volume days to maximize strength gains while optimizing recovery.</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <section id="overview">
+            <h2 class="section-title">Program Overview</h2>
+            
+            <div class="info-box">
+                <div class="info-box-title">Hybrid Approach</div>
+                <p>This program combines two training methodologies: top sets + backdowns for strength days and regular sets for volume days. This approach optimizes neural adaptations on heavy days while accumulating quality volume on lighter days.</p>
+            </div>
+
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-bullseye"></i>Program Goals</h3>
+                <ul>
+                    <li>Maximize strength gains in front squat, bench press, and deadlift</li>
+                    <li>Optimize recovery between training sessions</li>
+                    <li>Protect lower back and shoulder during rehabilitation</li>
+                    <li>Build work capacity to support long-term progress</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-calendar-week"></i>Weekly Schedule</h3>
+                <table>
+                    <tr>
+                        <th>Day</th>
+                        <th>Focus</th>
+                        <th>Training Method</th>
+                    </tr>
+                    <tr>
+                        <td>Day 1</td>
+                        <td>Lower Body Strength (Front Squat)</td>
+                        <td>Top Set + Backdowns</td>
+                    </tr>
+                    <tr>
+                        <td>Day 2</td>
+                        <td>Upper Body Strength (Bench Press)</td>
+                        <td>Top Set + Backdowns</td>
+                    </tr>
+                    <tr>
+                        <td>Day 3</td>
+                        <td>Lower Body Strength (Deadlift)</td>
+                        <td>Top Set + Backdowns</td>
+                    </tr>
+                    <tr>
+                        <td>Day 4</td>
+                        <td>Rest</td>
+                        <td>Active Recovery</td>
+                    </tr>
+                    <tr>
+                        <td>Day 5</td>
+                        <td>Lower Body Volume (Front Squat)</td>
+                        <td>Regular Sets</td>
+                    </tr>
+                    <tr>
+                        <td>Day 6</td>
+                        <td>Upper Body Volume (Bench Press)</td>
+                        <td>Regular Sets</td>
+                    </tr>
+                    <tr>
+                        <td>Day 7</td>
+                        <td>Lower Body Volume (Deadlift)</td>
+                        <td>Regular Sets</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-chart-line"></i>Program Phases</h3>
+                <div class="phase-indicator phase-accumulation">Weeks 1-3: Accumulation</div>
+                <p>Focus on building work capacity and technique with moderate intensity.</p>
+                
+                <div class="phase-indicator phase-deload">Week 4: Deload</div>
+                <p>Reduced volume to promote recovery and supercompensation.</p>
+                
+                <div class="phase-indicator phase-intensification">Weeks 5-7: Intensification</div>
+                <p>Increased intensity for strength adaptation while maintaining technique.</p>
+                
+                <div class="phase-indicator phase-deload">Week 8: Deload</div>
+                <p>Second deload to prevent overtraining and prepare for peak phase.</p>
+                
+                <div class="phase-indicator phase-peak">Weeks 9-11: Peak</div>
+                <p>Maximal intensity for peak strength development.</p>
+                
+                <div class="phase-indicator phase-test">Week 12: Test</div>
+                <p>1RM testing and establishment of new training maxes.</p>
+            </div>
+
+            <div class="warning-box">
+                <div class="info-box-title">Important Note</div>
+                <p>Weight recommendations are provided only for main lifts (front squat, bench press, deadlift). For accessory exercises, use RPE guidelines to determine appropriate weight. Start conservative and increase gradually.</p>
+            </div>
+        </section>
+
+        <section id="input">
+            <div class="input-section">
+                <h2>Enter Your 1RM Values</h2>
+                <p>Input your current one-rep max values for the main lifts. The program will automatically calculate the appropriate weights for each phase.</p>
+                
+                <div class="input-group">
+                    <div class="input-field">
+                        <label for="frontSquatMax">Front Squat 1RM (lbs):</label>
+                        <input type="number" id="frontSquatMax" placeholder="Enter 1RM" value="315">
+                    </div>
+                    <div class="input-field">
+                        <label for="benchPressMax">Bench Press 1RM (lbs):</label>
+                        <input type="number" id="benchPressMax" placeholder="Enter 1RM" value="275">
+                    </div>
+                    <div class="input-field">
+                        <label for="deadliftMax">Deadlift 1RM (lbs):</label>
+                        <input type="number" id="deadliftMax" placeholder="Enter 1RM" value="505">
+                    </div>
+                </div>
+                
+                <button class="btn btn-success" onclick="updateProgram()">
+                    <i class="fas fa-calculator"></i> Update Program
+                </button>
+                
+                <div id="updateMessage" style="margin-top: 15px; display: none;"></div>
+            </div>
+        </section>
+
+        <section id="program">
+            <h2 class="section-title">12-Week Program</h2>
+            
+            <div class="tabs">
+                <div class="tab active" onclick="openTab(event, 'week1-3')">Weeks 1-3: Accumulation</div>
+                <div class="tab" onclick="openTab(event, 'week4')">Week 4: Deload</div>
+                <div class="tab" onclick="openTab(event, 'week5-7')">Weeks 5-7: Intensification</div>
+                <div class="tab" onclick="openTab(event, 'week8')">Week 8: Deload</div>
+                <div class="tab" onclick="openTab(event, 'week9-11')">Weeks 9-11: Peak</div>
+                <div class="tab" onclick="openTab(event, 'week12')">Week 12: Test</div>
+            </div>
+
+            <div id="week1-3" class="tab-content active">
+                <h3>Weeks 1-3: Accumulation Phase</h3>
+                
+                <div class="card">
+                    <h4 class="card-title"><i class="fas fa-calendar-day"></i>Day 1: Lower Body Strength (Front Squat)</h4>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Front Squats (Top Set + Backdowns)</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">Warm-up: 2x5, 1x3</div>
+                            <div class="exercise-reps">Top set: 1x5</div>
+                            <div class="exercise-weight" id="w1d1-top">225lbs (71% of 1RM)</div>
+                            <div class="exercise-rpe">@ RPE 7</div>
+                        </div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">Backdown sets: 2x5</div>
+                            <div class="exercise-weight" id="w1d1-backdown">200lbs (90% of top set)</div>
+                            <div class="exercise-rpe">@ RPE 7</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Snatch RDLs</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x6</div>
+                            <div class="exercise-rpe">@ RPE 7</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Bulgarian Split Squat</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x8</div>
+                            <div class="exercise-rpe">@ RPE 7.5</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Pull-ups</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x8</div>
+                            <div class="exercise-rpe">@ RPE 7.5</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Cable Crunches</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x15</div>
+                            <div class="exercise-rpe">@ RPE 7.5</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h4 class="card-title"><i class="fas fa-calendar-day"></i>Day 2: Upper Body Strength (Bench Press)</h4>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Bench Press (Top Set + Backdowns)</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">Warm-up: 2x5, 1x3</div>
+                            <div class="exercise-reps">Top set: 1x5</div>
+                            <div class="exercise-weight" id="w1d2-top">205lbs (75% of 1RM)</div>
+                            <div class="exercise-rpe">@ RPE 7</div>
+                        </div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">Backdown sets: 2x5</div>
+                            <div class="exercise-weight" id="w1d2-backdown">185lbs (90% of top set)</div>
+                            <div class="exercise-rpe">@ RPE 7</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Close Grip Bench</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x6</div>
+                            <div class="exercise-rpe">@ RPE 7</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Dips</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x8</div>
+                            <div class="exercise-rpe">@ RPE 7.5</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Cable Lateral Raises</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x15</div>
+                            <div class="exercise-rpe">@ RPE 7.5</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Rear Delt Fly</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x15</div>
+                            <div class="exercise-rpe">@ RPE 7.5</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Leg Raises</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x30</div>
+                            <div class="exercise-rpe">@ RPE 7.5</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h4 class="card-title"><i class="fas fa-calendar-day"></i>Day 3: Lower Body Strength (Deadlift)</h4>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Deadlifts (Top Set + Backdowns)</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">Warm-up: 2x5, 1x3</div>
+                            <div class="exercise-reps">Top set: 1x5</div>
+                            <div class="exercise-weight" id="w1d3-top">365lbs (72% of 1RM)</div>
+                            <div class="exercise-rpe">@ RPE 7</div>
+                        </div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">Backdown sets: 2x5</div>
+                            <div class="exercise-weight" id="w1d3-backdown">330lbs (90% of top set)</div>
+                            <div class="exercise-rpe">@ RPE 7</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Shrugs</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x12</div>
+                            <div class="exercise-rpe">@ RPE 7.5</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Leg Press</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x8</div>
+                            <div class="exercise-rpe">@ RPE 7.5</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Dumbbell Row</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x12</div>
+                            <div class="exercise-rpe">@ RPE 7.5</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Lying Hamstring Curl</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x12</div>
+                            <div class="exercise-rpe">@ RPE 7.5</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Cable Crunches</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x15</div>
+                            <div class="exercise-rpe">@ RPE 7.5</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h4 class="card-title"><i class="fas fa-calendar-day"></i>Day 4: Rest</h4>
+                    <p>Active recovery: Light walking, stretching, foam rolling</p>
+                </div>
+
+                <div class="card">
+                    <h4 class="card-title"><i class="fas fa-calendar-day"></i>Day 5: Lower Body Volume (Front Squat)</h4>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Front Squats (Regular Sets)</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">Warm-up: 2x5, 1x3</div>
+                            <div class="exercise-reps">Working sets: 4x4</div>
+                            <div class="exercise-weight" id="w1d5-volume">205lbs (65% of 1RM)</div>
+                            <div class="exercise-rpe">@ RPE 7</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Snatch RDLs</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x8</div>
+                            <div class="exercise-rpe">@ RPE 7.5</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Bulgarian Split Squat</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x8</div>
+                            <div class="exercise-rpe">@ RPE 7.5</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Pull-ups</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x8</div>
+                            <div class="exercise-rpe">@ RPE 7.5</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Cable Crunches</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x15</div>
+                            <div class="exercise-rpe">@ RPE 7.5</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h4 class="card-title"><i class="fas fa-calendar-day"></i>Day 6: Upper Body Volume (Bench Press)</h4>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Bench Press (Regular Sets)</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">Warm-up: 2x5, 1x3</div>
+                            <div class="exercise-reps">Working sets: 4x4</div>
+                            <div class="exercise-weight" id="w1d6-volume">190lbs (69% of 1RM)</div>
+                            <div class="exercise-rpe">@ RPE 7</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Close Grip Bench</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x8</div>
+                            <div class="exercise-rpe">@ RPE 7.5</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Dips</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x12</div>
+                            <div class="exercise-rpe">@ RPE 7.5</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Cable Lateral Raises</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x15</div>
+                            <div class="exercise-rpe">@ RPE 7.5</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Rear Delt Fly</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x15</div>
+                            <div class="exercise-rpe">@ RPE 7.5</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Leg Raises</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x30</div>
+                            <div class="exercise-rpe">@ RPE 7.5</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h4 class="card-title"><i class="fas fa-calendar-day"></i>Day 7: Lower Body Volume (Deadlift)</h4>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Deadlifts (Regular Sets)</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">Warm-up: 2x5, 1x3</div>
+                            <div class="exercise-reps">Working sets: 4x4</div>
+                            <div class="exercise-weight" id="w1d7-volume">335lbs (66% of 1RM)</div>
+                            <div class="exercise-rpe">@ RPE 7</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Shrugs</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x15</div>
+                            <div class="exercise-rpe">@ RPE 7.5</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Leg Press</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x10</div>
+                            <div class="exercise-rpe">@ RPE 7.5</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Dumbbell Row</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x12</div>
+                            <div class="exercise-rpe">@ RPE 7.5</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Lying Hamstring Curl</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x12</div>
+                            <div class="exercise-rpe">@ RPE 7.5</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Cable Crunches</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x15</div>
+                            <div class="exercise-rpe">@ RPE 7.5</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="week4" class="tab-content">
+                <h3>Week 4: Deload Phase</h3>
+                <div class="warning-box">
+                    <div class="info-box-title">Deload Instructions</div>
+                    <p>Follow the same structure as Week 1, but reduce all working weights by 40% and keep RPE at 5-6 for all exercises. This week is crucial for recovery and supercompensation.</p>
+                </div>
+
+                <div class="card">
+                    <h4 class="card-title"><i class="fas fa-calendar-day"></i>Day 1: Lower Body Strength (Front Squat)</h4>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Front Squats (Top Set + Backdowns)</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">Warm-up: 2x5, 1x3</div>
+                            <div class="exercise-reps">Top set: 1x5</div>
+                            <div class="exercise-weight" id="w4d1-top">135lbs (40% reduction)</div>
+                            <div class="exercise-rpe">@ RPE 5-6</div>
+                        </div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">Backdown sets: 2x5</div>
+                            <div class="exercise-weight" id="w4d1-backdown">120lbs (40% reduction)</div>
+                            <div class="exercise-rpe">@ RPE 5-6</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Snatch RDLs</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x6</div>
+                            <div class="exercise-rpe">@ RPE 5-6</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Bulgarian Split Squat</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x8</div>
+                            <div class="exercise-rpe">@ RPE 5-6</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Pull-ups</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x8</div>
+                            <div class="exercise-rpe">@ RPE 5-6</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Cable Crunches</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x15</div>
+                            <div class="exercise-rpe">@ RPE 5-6</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h4 class="card-title"><i class="fas fa-calendar-day"></i>Day 2: Upper Body Strength (Bench Press)</h4>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Bench Press (Top Set + Backdowns)</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">Warm-up: 2x5, 1x3</div>
+                            <div class="exercise-reps">Top set: 1x5</div>
+                            <div class="exercise-weight" id="w4d2-top">125lbs (40% reduction)</div>
+                            <div class="exercise-rpe">@ RPE 5-6</div>
+                        </div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">Backdown sets: 2x5</div>
+                            <div class="exercise-weight" id="w4d2-backdown">110lbs (40% reduction)</div>
+                            <div class="exercise-rpe">@ RPE 5-6</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Close Grip Bench</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x6</div>
+                            <div class="exercise-rpe">@ RPE 5-6</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Dips</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x8</div>
+                            <div class="exercise-rpe">@ RPE 5-6</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Cable Lateral Raises</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x15</div>
+                            <div class="exercise-rpe">@ RPE 5-6</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Rear Delt Fly</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x15</div>
+                            <div class="exercise-rpe">@ RPE 5-6</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Leg Raises</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x30</div>
+                            <div class="exercise-rpe">@ RPE 5-6</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h4 class="card-title"><i class="fas fa-calendar-day"></i>Day 3: Lower Body Strength (Deadlift)</h4>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Deadlifts (Top Set + Backdowns)</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">Warm-up: 2x5, 1x3</div>
+                            <div class="exercise-reps">Top set: 1x5</div>
+                            <div class="exercise-weight" id="w4d3-top">220lbs (40% reduction)</div>
+                            <div class="exercise-rpe">@ RPE 5-6</div>
+                        </div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">Backdown sets: 2x5</div>
+                            <div class="exercise-weight" id="w4d3-backdown">200lbs (40% reduction)</div>
+                            <div class="exercise-rpe">@ RPE 5-6</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Shrugs</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x12</div>
+                            <div class="exercise-rpe">@ RPE 5-6</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Leg Press</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x8</div>
+                            <div class="exercise-rpe">@ RPE 5-6</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Dumbbell Row</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x12</div>
+                            <div class="exercise-rpe">@ RPE 5-6</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Lying Hamstring Curl</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x12</div>
+                            <div class="exercise-rpe">@ RPE 5-6</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Cable Crunches</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x15</div>
+                            <div class="exercise-rpe">@ RPE 5-6</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h4 class="card-title"><i class="fas fa-calendar-day"></i>Day 4: Rest</h4>
+                    <p>Active recovery: Light walking, stretching, foam rolling</p>
+                </div>
+
+                <div class="card">
+                    <h4 class="card-title"><i class="fas fa-calendar-day"></i>Day 5: Lower Body Volume (Front Squat)</h4>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Front Squats (Regular Sets)</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">Warm-up: 2x5, 1x3</div>
+                            <div class="exercise-reps">Working sets: 4x4</div>
+                            <div class="exercise-weight" id="w4d5-volume">125lbs (40% reduction)</div>
+                            <div class="exercise-rpe">@ RPE 5-6</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Snatch RDLs</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x8</div>
+                            <div class="exercise-rpe">@ RPE 5-6</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Bulgarian Split Squat</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x8</div>
+                            <div class="exercise-rpe">@ RPE 5-6</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Pull-ups</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x8</div>
+                            <div class="exercise-rpe">@ RPE 5-6</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Cable Crunches</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x15</div>
+                            <div class="exercise-rpe">@ RPE 5-6</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h4 class="card-title"><i class="fas fa-calendar-day"></i>Day 6: Upper Body Volume (Bench Press)</h4>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Bench Press (Regular Sets)</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">Warm-up: 2x5, 1x3</div>
+                            <div class="exercise-reps">Working sets: 4x4</div>
+                            <div class="exercise-weight" id="w4d6-volume">115lbs (40% reduction)</div>
+                            <div class="exercise-rpe">@ RPE 5-6</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Close Grip Bench</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x8</div>
+                            <div class="exercise-rpe">@ RPE 5-6</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Dips</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x12</div>
+                            <div class="exercise-rpe">@ RPE 5-6</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Cable Lateral Raises</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x15</div>
+                            <div class="exercise-rpe">@ RPE 5-6</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Rear Delt Fly</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x15</div>
+                            <div class="exercise-rpe">@ RPE 5-6</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Leg Raises</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x30</div>
+                            <div class="exercise-rpe">@ RPE 5-6</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h4 class="card-title"><i class="fas fa-calendar-day"></i>Day 7: Lower Body Volume (Deadlift)</h4>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Deadlifts (Regular Sets)</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">Warm-up: 2x5, 1x3</div>
+                            <div class="exercise-reps">Working sets: 4x4</div>
+                            <div class="exercise-weight" id="w4d7-volume">200lbs (40% reduction)</div>
+                            <div class="exercise-rpe">@ RPE 5-6</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Shrugs</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x15</div>
+                            <div class="exercise-rpe">@ RPE 5-6</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Leg Press</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x10</div>
+                            <div class="exercise-rpe">@ RPE 5-6</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Dumbbell Row</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x12</div>
+                            <div class="exercise-rpe">@ RPE 5-6</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Lying Hamstring Curl</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x12</div>
+                            <div class="exercise-rpe">@ RPE 5-6</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Cable Crunches</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x15</div>
+                            <div class="exercise-rpe">@ RPE 5-6</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="week5-7" class="tab-content">
+                <h3>Weeks 5-7: Intensification Phase</h3>
+                
+                <div class="card">
+                    <h4 class="card-title"><i class="fas fa-calendar-day"></i>Day 1: Lower Body Strength (Front Squat)</h4>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Front Squats (Top Set + Backdowns)</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">Warm-up: 2x5, 1x3</div>
+                            <div class="exercise-reps">Top set: 1x4</div>
+                            <div class="exercise-weight" id="w5d1-top">245lbs (78% of 1RM)</div>
+                            <div class="exercise-rpe">@ RPE 7.5</div>
+                        </div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">Backdown sets: 2x4</div>
+                            <div class="exercise-weight" id="w5d1-backdown">220lbs (90% of top set)</div>
+                            <div class="exercise-rpe">@ RPE 7.5</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Snatch RDLs</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x6</div>
+                            <div class="exercise-rpe">@ RPE 7.5</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Bulgarian Split Squat</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x8</div>
+                            <div class="exercise-rpe">@ RPE 8</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Pull-ups</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x8</div>
+                            <div class="exercise-rpe">@ RPE 8</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Cable Crunches</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x15</div>
+                            <div class="exercise-rpe">@ RPE 8</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h4 class="card-title"><i class="fas fa-calendar-day"></i>Day 2: Upper Body Strength (Bench Press)</h4>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Bench Press (Top Set + Backdowns)</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">Warm-up: 2x5, 1x3</div>
+                            <div class="exercise-reps">Top set: 1x4</div>
+                            <div class="exercise-weight" id="w5d2-top">225lbs (82% of 1RM)</div>
+                            <div class="exercise-rpe">@ RPE 7.5</div>
+                        </div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">Backdown sets: 2x4</div>
+                            <div class="exercise-weight" id="w5d2-backdown">200lbs (90% of top set)</div>
+                            <div class="exercise-rpe">@ RPE 7.5</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Close Grip Bench</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x6</div>
+                            <div class="exercise-rpe">@ RPE 7.5</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Dips</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x8</div>
+                            <div class="exercise-rpe">@ RPE 8</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Cable Lateral Raises</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x15</div>
+                            <div class="exercise-rpe">@ RPE 8</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Rear Delt Fly</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x15</div>
+                            <div class="exercise-rpe">@ RPE 8</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Leg Raises</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x30</div>
+                            <div class="exercise-rpe">@ RPE 8</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h4 class="card-title"><i class="fas fa-calendar-day"></i>Day 3: Lower Body Strength (Deadlift)</h4>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Deadlifts (Top Set + Backdowns)</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">Warm-up: 2x5, 1x3</div>
+                            <div class="exercise-reps">Top set: 1x4</div>
+                            <div class="exercise-weight" id="w5d3-top">405lbs (80% of 1RM)</div>
+                            <div class="exercise-rpe">@ RPE 7.5</div>
+                        </div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">Backdown sets: 2x4</div>
+                            <div class="exercise-weight" id="w5d3-backdown">365lbs (90% of top set)</div>
+                            <div class="exercise-rpe">@ RPE 7.5</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Shrugs</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x12</div>
+                            <div class="exercise-rpe">@ RPE 8</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Leg Press</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x8</div>
+                            <div class="exercise-rpe">@ RPE 8</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Dumbbell Row</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x12</div>
+                            <div class="exercise-rpe">@ RPE 8</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Lying Hamstring Curl</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x12</div>
+                            <div class="exercise-rpe">@ RPE 8</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Cable Crunches</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x15</div>
+                            <div class="exercise-rpe">@ RPE 8</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h4 class="card-title"><i class="fas fa-calendar-day"></i>Day 4: Rest</h4>
+                    <p>Active recovery: Light walking, stretching, foam rolling</p>
+                </div>
+
+                <div class="card">
+                    <h4 class="card-title"><i class="fas fa-calendar-day"></i>Day 5: Lower Body Volume (Front Squat)</h4>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Front Squats (Regular Sets)</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">Warm-up: 2x5, 1x3</div>
+                            <div class="exercise-reps">Working sets: 4x4</div>
+                            <div class="exercise-weight" id="w5d5-volume">225lbs (71% of 1RM)</div>
+                            <div class="exercise-rpe">@ RPE 7.5</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Snatch RDLs</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x8</div>
+                            <div class="exercise-rpe">@ RPE 8</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Bulgarian Split Squat</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x8</div>
+                            <div class="exercise-rpe">@ RPE 8</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Pull-ups</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x8</div>
+                            <div class="exercise-rpe">@ RPE 8</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Cable Crunches</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x15</div>
+                            <div class="exercise-rpe">@ RPE 8</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h4 class="card-title"><i class="fas fa-calendar-day"></i>Day 6: Upper Body Volume (Bench Press)</h4>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Bench Press (Regular Sets)</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">Warm-up: 2x5, 1x3</div>
+                            <div class="exercise-reps">Working sets: 4x4</div>
+                            <div class="exercise-weight" id="w5d6-volume">205lbs (75% of 1RM)</div>
+                            <div class="exercise-rpe">@ RPE 7.5</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Close Grip Bench</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x8</div>
+                            <div class="exercise-rpe">@ RPE 8</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Dips</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x12</div>
+                            <div class="exercise-rpe">@ RPE 8</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Cable Lateral Raises</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x15</div>
+                            <div class="exercise-rpe">@ RPE 8</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Rear Delt Fly</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x15</div>
+                            <div class="exercise-rpe">@ RPE 8</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Leg Raises</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x30</div>
+                            <div class="exercise-rpe">@ RPE 8</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h4 class="card-title"><i class="fas fa-calendar-day"></i>Day 7: Lower Body Volume (Deadlift)</h4>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Deadlifts (Regular Sets)</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">Warm-up: 2x5, 1x3</div>
+                            <div class="exercise-reps">Working sets: 4x4</div>
+                            <div class="exercise-weight" id="w5d7-volume">365lbs (72% of 1RM)</div>
+                            <div class="exercise-rpe">@ RPE 7.5</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Shrugs</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x15</div>
+                            <div class="exercise-rpe">@ RPE 8</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Leg Press</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x10</div>
+                            <div class="exercise-rpe">@ RPE 8</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Dumbbell Row</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x12</div>
+                            <div class="exercise-rpe">@ RPE 8</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Lying Hamstring Curl</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x12</div>
+                            <div class="exercise-rpe">@ RPE 8</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Cable Crunches</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x15</div>
+                            <div class="exercise-rpe">@ RPE 8</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="week8" class="tab-content">
+                <h3>Week 8: Deload Phase</h3>
+                <div class="warning-box">
+                    <div class="info-box-title">Deload Instructions</div>
+                    <p>Follow the same structure as Week 5, but reduce all working weights by 40% and keep RPE at 5-6 for all exercises. This week is crucial for recovery and preparing for the peak phase.</p>
+                </div>
+
+                <div class="card">
+                    <h4 class="card-title"><i class="fas fa-calendar-day"></i>Day 1: Lower Body Strength (Front Squat)</h4>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Front Squats (Top Set + Backdowns)</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">Warm-up: 2x5, 1x3</div>
+                            <div class="exercise-reps">Top set: 1x4</div>
+                            <div class="exercise-weight" id="w8d1-top">145lbs (40% reduction)</div>
+                            <div class="exercise-rpe">@ RPE 5-6</div>
+                        </div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">Backdown sets: 2x4</div>
+                            <div class="exercise-weight" id="w8d1-backdown">130lbs (40% reduction)</div>
+                            <div class="exercise-rpe">@ RPE 5-6</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Snatch RDLs</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x6</div>
+                            <div class="exercise-rpe">@ RPE 5-6</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Bulgarian Split Squat</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x8</div>
+                            <div class="exercise-rpe">@ RPE 5-6</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Pull-ups</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x8</div>
+                            <div class="exercise-rpe">@ RPE 5-6</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Cable Crunches</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x15</div>
+                            <div class="exercise-rpe">@ RPE 5-6</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h4 class="card-title"><i class="fas fa-calendar-day"></i>Day 2: Upper Body Strength (Bench Press)</h4>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Bench Press (Top Set + Backdowns)</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">Warm-up: 2x5, 1x3</div>
+                            <div class="exercise-reps">Top set: 1x4</div>
+                            <div class="exercise-weight" id="w8d2-top">135lbs (40% reduction)</div>
+                            <div class="exercise-rpe">@ RPE 5-6</div>
+                        </div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">Backdown sets: 2x4</div>
+                            <div class="exercise-weight" id="w8d2-backdown">120lbs (40% reduction)</div>
+                            <div class="exercise-rpe">@ RPE 5-6</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Close Grip Bench</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x6</div>
+                            <div class="exercise-rpe">@ RPE 5-6</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Dips</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x8</div>
+                            <div class="exercise-rpe">@ RPE 5-6</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Cable Lateral Raises</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x15</div>
+                            <div class="exercise-rpe">@ RPE 5-6</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Rear Delt Fly</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x15</div>
+                            <div class="exercise-rpe">@ RPE 5-6</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Leg Raises</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x30</div>
+                            <div class="exercise-rpe">@ RPE 5-6</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h4 class="card-title"><i class="fas fa-calendar-day"></i>Day 3: Lower Body Strength (Deadlift)</h4>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Deadlifts (Top Set + Backdowns)</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">Warm-up: 2x5, 1x3</div>
+                            <div class="exercise-reps">Top set: 1x4</div>
+                            <div class="exercise-weight" id="w8d3-top">245lbs (40% reduction)</div>
+                            <div class="exercise-rpe">@ RPE 5-6</div>
+                        </div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">Backdown sets: 2x4</div>
+                            <div class="exercise-weight" id="w8d3-backdown">220lbs (40% reduction)</div>
+                            <div class="exercise-rpe">@ RPE 5-6</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Shrugs</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x12</div>
+                            <div class="exercise-rpe">@ RPE 5-6</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Leg Press</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x8</div>
+                            <div class="exercise-rpe">@ RPE 5-6</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Dumbbell Row</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x12</div>
+                            <div class="exercise-rpe">@ RPE 5-6</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Lying Hamstring Curl</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x12</div>
+                            <div class="exercise-rpe">@ RPE 5-6</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Cable Crunches</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x15</div>
+                            <div class="exercise-rpe">@ RPE 5-6</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h4 class="card-title"><i class="fas fa-calendar-day"></i>Day 4: Rest</h4>
+                    <p>Active recovery: Light walking, stretching, foam rolling</p>
+                </div>
+
+                <div class="card">
+                    <h4 class="card-title"><i class="fas fa-calendar-day"></i>Day 5: Lower Body Volume (Front Squat)</h4>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Front Squats (Regular Sets)</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">Warm-up: 2x5, 1x3</div>
+                            <div class="exercise-reps">Working sets: 4x4</div>
+                            <div class="exercise-weight" id="w8d5-volume">135lbs (40% reduction)</div>
+                            <div class="exercise-rpe">@ RPE 5-6</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Snatch RDLs</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x8</div>
+                            <div class="exercise-rpe">@ RPE 5-6</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Bulgarian Split Squat</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x8</div>
+                            <div class="exercise-rpe">@ RPE 5-6</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Pull-ups</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x8</div>
+                            <div class="exercise-rpe">@ RPE 5-6</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Cable Crunches</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x15</div>
+                            <div class="exercise-rpe">@ RPE 5-6</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h4 class="card-title"><i class="fas fa-calendar-day"></i>Day 6: Upper Body Volume (Bench Press)</h4>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Bench Press (Regular Sets)</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">Warm-up: 2x5, 1x3</div>
+                            <div class="exercise-reps">Working sets: 4x4</div>
+                            <div class="exercise-weight" id="w8d6-volume">125lbs (40% reduction)</div>
+                            <div class="exercise-rpe">@ RPE 5-6</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Close Grip Bench</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x8</div>
+                            <div class="exercise-rpe">@ RPE 5-6</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Dips</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x12</div>
+                            <div class="exercise-rpe">@ RPE 5-6</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Cable Lateral Raises</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x15</div>
+                            <div class="exercise-rpe">@ RPE 5-6</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Rear Delt Fly</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x15</div>
+                            <div class="exercise-rpe">@ RPE 5-6</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Leg Raises</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x30</div>
+                            <div class="exercise-rpe">@ RPE 5-6</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h4 class="card-title"><i class="fas fa-calendar-day"></i>Day 7: Lower Body Volume (Deadlift)</h4>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Deadlifts (Regular Sets)</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">Warm-up: 2x5, 1x3</div>
+                            <div class="exercise-reps">Working sets: 4x4</div>
+                            <div class="exercise-weight" id="w8d7-volume">220lbs (40% reduction)</div>
+                            <div class="exercise-rpe">@ RPE 5-6</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Shrugs</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x15</div>
+                            <div class="exercise-rpe">@ RPE 5-6</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Leg Press</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x10</div>
+                            <div class="exercise-rpe">@ RPE 5-6</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Dumbbell Row</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x12</div>
+                            <div class="exercise-rpe">@ RPE 5-6</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Lying Hamstring Curl</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x12</div>
+                            <div class="exercise-rpe">@ RPE 5-6</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Cable Crunches</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x15</div>
+                            <div class="exercise-rpe">@ RPE 5-6</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="week9-11" class="tab-content">
+                <h3>Weeks 9-11: Peak Phase</h3>
+                
+                <div class="card">
+                    <h4 class="card-title"><i class="fas fa-calendar-day"></i>Day 1: Lower Body Strength (Front Squat)</h4>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Front Squats (Top Set + Backdowns)</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">Warm-up: 2x5, 1x3</div>
+                            <div class="exercise-reps">Top set: 1x3</div>
+                            <div class="exercise-weight" id="w9d1-top">265lbs (84% of 1RM)</div>
+                            <div class="exercise-rpe">@ RPE 8</div>
+                        </div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">Backdown sets: 2x3</div>
+                            <div class="exercise-weight" id="w9d1-backdown">240lbs (90% of top set)</div>
+                            <div class="exercise-rpe">@ RPE 8</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Snatch RDLs</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x6</div>
+                            <div class="exercise-rpe">@ RPE 8</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Bulgarian Split Squat</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x8</div>
+                            <div class="exercise-rpe">@ RPE 8.5</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Pull-ups</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x8</div>
+                            <div class="exercise-rpe">@ RPE 8.5</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Cable Crunches</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x15</div>
+                            <div class="exercise-rpe">@ RPE 8.5</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h4 class="card-title"><i class="fas fa-calendar-day"></i>Day 2: Upper Body Strength (Bench Press)</h4>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Bench Press (Top Set + Backdowns)</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">Warm-up: 2x5, 1x3</div>
+                            <div class="exercise-reps">Top set: 1x3</div>
+                            <div class="exercise-weight" id="w9d2-top">245lbs (89% of 1RM)</div>
+                            <div class="exercise-rpe">@ RPE 8</div>
+                        </div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">Backdown sets: 2x3</div>
+                            <div class="exercise-weight" id="w9d2-backdown">220lbs (90% of top set)</div>
+                            <div class="exercise-rpe">@ RPE 8</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Close Grip Bench</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x6</div>
+                            <div class="exercise-rpe">@ RPE 8</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Dips</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x8</div>
+                            <div class="exercise-rpe">@ RPE 8.5</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Cable Lateral Raises</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x15</div>
+                            <div class="exercise-rpe">@ RPE 8.5</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Rear Delt Fly</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x15</div>
+                            <div class="exercise-rpe">@ RPE 8.5</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Leg Raises</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x30</div>
+                            <div class="exercise-rpe">@ RPE 8.5</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h4 class="card-title"><i class="fas fa-calendar-day"></i>Day 3: Lower Body Strength (Deadlift)</h4>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Deadlifts (Top Set + Backdowns)</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">Warm-up: 2x5, 1x3</div>
+                            <div class="exercise-reps">Top set: 1x3</div>
+                            <div class="exercise-weight" id="w9d3-top">445lbs (88% of 1RM)</div>
+                            <div class="exercise-rpe">@ RPE 8</div>
+                        </div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">Backdown sets: 2x3</div>
+                            <div class="exercise-weight" id="w9d3-backdown">400lbs (90% of top set)</div>
+                            <div class="exercise-rpe">@ RPE 8</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Shrugs</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x12</div>
+                            <div class="exercise-rpe">@ RPE 8.5</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Leg Press</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x8</div>
+                            <div class="exercise-rpe">@ RPE 8.5</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Dumbbell Row</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x12</div>
+                            <div class="exercise-rpe">@ RPE 8.5</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Lying Hamstring Curl</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x12</div>
+                            <div class="exercise-rpe">@ RPE 8.5</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Cable Crunches</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x15</div>
+                            <div class="exercise-rpe">@ RPE 8.5</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h4 class="card-title"><i class="fas fa-calendar-day"></i>Day 4: Rest</h4>
+                    <p>Active recovery: Light walking, stretching, foam rolling</p>
+                </div>
+
+                <div class="card">
+                    <h4 class="card-title"><i class="fas fa-calendar-day"></i>Day 5: Lower Body Volume (Front Squat)</h4>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Front Squats (Regular Sets)</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">Warm-up: 2x5, 1x3</div>
+                            <div class="exercise-reps">Working sets: 4x4</div>
+                            <div class="exercise-weight" id="w9d5-volume">245lbs (78% of 1RM)</div>
+                            <div class="exercise-rpe">@ RPE 8</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Snatch RDLs</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x8</div>
+                            <div class="exercise-rpe">@ RPE 8.5</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Bulgarian Split Squat</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x8</div>
+                            <div class="exercise-rpe">@ RPE 8.5</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Pull-ups</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x8</div>
+                            <div class="exercise-rpe">@ RPE 8.5</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Cable Crunches</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x15</div>
+                            <div class="exercise-rpe">@ RPE 8.5</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h4 class="card-title"><i class="fas fa-calendar-day"></i>Day 6: Upper Body Volume (Bench Press)</h4>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Bench Press (Regular Sets)</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">Warm-up: 2x5, 1x3</div>
+                            <div class="exercise-reps">Working sets: 4x4</div>
+                            <div class="exercise-weight" id="w9d6-volume">225lbs (82% of 1RM)</div>
+                            <div class="exercise-rpe">@ RPE 8</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Close Grip Bench</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x8</div>
+                            <div class="exercise-rpe">@ RPE 8.5</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Dips</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x12</div>
+                            <div class="exercise-rpe">@ RPE 8.5</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Cable Lateral Raises</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x15</div>
+                            <div class="exercise-rpe">@ RPE 8.5</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Rear Delt Fly</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x15</div>
+                            <div class="exercise-rpe">@ RPE 8.5</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Leg Raises</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x30</div>
+                            <div class="exercise-rpe">@ RPE 8.5</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h4 class="card-title"><i class="fas fa-calendar-day"></i>Day 7: Lower Body Volume (Deadlift)</h4>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Deadlifts (Regular Sets)</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">Warm-up: 2x5, 1x3</div>
+                            <div class="exercise-reps">Working sets: 4x4</div>
+                            <div class="exercise-weight" id="w9d7-volume">405lbs (80% of 1RM)</div>
+                            <div class="exercise-rpe">@ RPE 8</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Shrugs</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x15</div>
+                            <div class="exercise-rpe">@ RPE 8.5</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Leg Press</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x10</div>
+                            <div class="exercise-rpe">@ RPE 8.5</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Dumbbell Row</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x12</div>
+                            <div class="exercise-rpe">@ RPE 8.5</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Lying Hamstring Curl</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x12</div>
+                            <div class="exercise-rpe">@ RPE 8.5</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Cable Crunches</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x15</div>
+                            <div class="exercise-rpe">@ RPE 8.5</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="week12" class="tab-content">
+                <h3>Week 12: Test Phase</h3>
+                <div class="warning-box">
+                    <div class="info-box-title">Testing Instructions</div>
+                    <p>This week is dedicated to testing your 1RM on main lifts. Follow the warm-up progression and attempt a new 1RM on Day 1, 2, and 3. Record your new maxes and use them to calculate training weights for your next cycle.</p>
+                </div>
+
+                <div class="card">
+                    <h4 class="card-title"><i class="fas fa-calendar-day"></i>Day 1: Lower Body Strength (Front Squat)</h4>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Front Squat 1RM Test</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">Warm-up: 5x5 @ 135lbs, 3x3 @ 185lbs, 2x2 @ 225lbs, 1x1 @ 265lbs</div>
+                            <div class="exercise-reps">Test sets: 1x1</div>
+                            <div class="exercise-rpe">@ RPE 9-10 (0-1 RIR)</div>
+                        </div>
+                        <p>Record your new 1RM</p>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Snatch RDLs</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x6</div>
+                            <div class="exercise-rpe">@ RPE 7</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Bulgarian Split Squat</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x8</div>
+                            <div class="exercise-rpe">@ RPE 7</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Pull-ups</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x8</div>
+                            <div class="exercise-rpe">@ RPE 7</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Cable Crunches</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x15</div>
+                            <div class="exercise-rpe">@ RPE 7</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h4 class="card-title"><i class="fas fa-calendar-day"></i>Day 2: Upper Body Strength (Bench Press)</h4>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Bench Press 1RM Test</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">Warm-up: 5x5 @ 135lbs, 3x3 @ 185lbs, 2x2 @ 225lbs, 1x1 @ 255lbs</div>
+                            <div class="exercise-reps">Test sets: 1x1</div>
+                            <div class="exercise-rpe">@ RPE 9-10 (0-1 RIR)</div>
+                        </div>
+                        <p>Record your new 1RM</p>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Close Grip Bench</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x6</div>
+                            <div class="exercise-rpe">@ RPE 7</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Dips</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x8</div>
+                            <div class="exercise-rpe">@ RPE 7</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Cable Lateral Raises</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x15</div>
+                            <div class="exercise-rpe">@ RPE 7</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Rear Delt Fly</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x15</div>
+                            <div class="exercise-rpe">@ RPE 7</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Leg Raises</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x30</div>
+                            <div class="exercise-rpe">@ RPE 7</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h4 class="card-title"><i class="fas fa-calendar-day"></i>Day 3: Lower Body Strength (Deadlift)</h4>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Deadlift 1RM Test</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">Warm-up: 5x5 @ 225lbs, 3x3 @ 315lbs, 2x2 @ 405lbs, 1x1 @ 465lbs</div>
+                            <div class="exercise-reps">Test sets: 1x1</div>
+                            <div class="exercise-rpe">@ RPE 9-10 (0-1 RIR)</div>
+                        </div>
+                        <p>Record your new 1RM</p>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Shrugs</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x12</div>
+                            <div class="exercise-rpe">@ RPE 7</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Leg Press</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x8</div>
+                            <div class="exercise-rpe">@ RPE 7</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Dumbbell Row</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x12</div>
+                            <div class="exercise-rpe">@ RPE 7</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Lying Hamstring Curl</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x12</div>
+                            <div class="exercise-rpe">@ RPE 7</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Cable Crunches</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x15</div>
+                            <div class="exercise-rpe">@ RPE 7</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h4 class="card-title"><i class="fas fa-calendar-day"></i>Day 4: Rest</h4>
+                    <p>Complete rest</p>
+                </div>
+
+                <div class="card">
+                    <h4 class="card-title"><i class="fas fa-calendar-day"></i>Day 5: Lower Body Volume (Front Squat)</h4>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Front Squats (Regular Sets)</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">Warm-up: 2x5, 1x3</div>
+                            <div class="exercise-reps">Working sets: 4x5</div>
+                            <div class="exercise-weight" id="w12d5-volume">70% of new 1RM</div>
+                            <div class="exercise-rpe">@ RPE 6-7</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Snatch RDLs</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x6</div>
+                            <div class="exercise-rpe">@ RPE 7</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Bulgarian Split Squat</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x8</div>
+                            <div class="exercise-rpe">@ RPE 7</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Pull-ups</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x8</div>
+                            <div class="exercise-rpe">@ RPE 7</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Cable Crunches</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x15</div>
+                            <div class="exercise-rpe">@ RPE 7</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h4 class="card-title"><i class="fas fa-calendar-day"></i>Day 6: Upper Body Volume (Bench Press)</h4>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Bench Press (Regular Sets)</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">Warm-up: 2x5, 1x3</div>
+                            <div class="exercise-reps">Working sets: 4x5</div>
+                            <div class="exercise-weight" id="w12d6-volume">70% of new 1RM</div>
+                            <div class="exercise-rpe">@ RPE 6-7</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Close Grip Bench</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x8</div>
+                            <div class="exercise-rpe">@ RPE 7</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Dips</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x12</div>
+                            <div class="exercise-rpe">@ RPE 7</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Cable Lateral Raises</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x15</div>
+                            <div class="exercise-rpe">@ RPE 7</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Rear Delt Fly</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x15</div>
+                            <div class="exercise-rpe">@ RPE 7</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Leg Raises</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x30</div>
+                            <div class="exercise-rpe">@ RPE 7</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h4 class="card-title"><i class="fas fa-calendar-day"></i>Day 7: Lower Body Volume (Deadlift)</h4>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Deadlifts (Regular Sets)</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">Warm-up: 2x5, 1x3</div>
+                            <div class="exercise-reps">Working sets: 4x5</div>
+                            <div class="exercise-weight" id="w12d7-volume">70% of new 1RM</div>
+                            <div class="exercise-rpe">@ RPE 6-7</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Shrugs</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x15</div>
+                            <div class="exercise-rpe">@ RPE 7</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Leg Press</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x10</div>
+                            <div class="exercise-rpe">@ RPE 7</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Dumbbell Row</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x12</div>
+                            <div class="exercise-rpe">@ RPE 7</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Lying Hamstring Curl</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x12</div>
+                            <div class="exercise-rpe">@ RPE 7</div>
+                        </div>
+                    </div>
+                    <div class="exercise-card">
+                        <div class="exercise-name">Cable Crunches</div>
+                        <div class="exercise-details">
+                            <div class="exercise-sets">3x15</div>
+                            <div class="exercise-rpe">@ RPE 7</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="exercises">
+            <h2 class="section-title">Exercise Instructions</h2>
+            
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-dumbbell"></i>Main Lifts</h3>
+                
+                <div class="exercise-card">
+                    <div class="exercise-name">Front Squat</div>
+                    <p><strong>Setup:</strong> Position the barbell across the front of your shoulders, resting on your clavicles and deltoids. Cross your arms and place your hands on top of the bar with elbows high and pointing forward.</p>
+                    <p><strong>Execution:</strong> Initiate the movement by bending at the hips and knees simultaneously. Keep your chest up and back straight. Descend until your thighs are at least parallel to the floor. Drive through your heels to return to the starting position.</p>
+                    <p><strong>Cues:</strong> Keep elbows high throughout the movement, maintain a neutral spine, and focus on keeping your weight centered over your mid-foot.</p>
+                </div>
+                
+                <div class="exercise-card">
+                    <div class="exercise-name">Bench Press</div>
+                    <p><strong>Setup:</strong> Lie on a flat bench with your eyes directly under the bar. Place your feet flat on the floor and maintain a slight arch in your lower back. Grip the bar slightly wider than shoulder-width.</p>
+                    <p><strong>Execution:</strong> Unrack the bar and lower it to your mid-chest with control. Keep your elbows at approximately a 45-degree angle to your torso. Press the bar back up to the starting position by extending your arms.</p>
+                    <p><strong>Cues:</strong> Keep your shoulder blades retracted and depressed, maintain tightness in your upper back, and drive through your heels.</p>
+                </div>
+                
+                <div class="exercise-card">
+                    <div class="exercise-name">Deadlift</div>
+                    <p><strong>Setup:</strong> Stand with your feet hip-width apart, toes under the bar. Bend at the hips and knees to grip the bar just outside your shins. Your hips should be higher than your knees but lower than your shoulders.</p>
+                    <p><strong>Execution:</strong> Drive through your heels and extend your hips and knees simultaneously. Keep the bar close to your body throughout the movement. Stand tall at the top with your hips and knees fully extended.</p>
+                    <p><strong>Cues:</strong> Maintain a neutral spine, keep your chest up, and engage your lats to keep the bar close to your body.</p>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-dumbbell"></i>Accessory Exercises</h3>
+                
+                <div class="exercise-card">
+                    <div class="exercise-name">Snatch RDL</div>
+                    <p><strong>Setup:</strong> Stand with feet hip-width apart, holding a barbell with a snatch-width grip in front of your thighs.</p>
+                    <p><strong>Execution:</strong> Push your hips back while maintaining a slight bend in your knees. Lower the bar along your shins until you feel a stretch in your hamstrings. Return to the starting position by extending your hips.</p>
+                    <p><strong>Cues:</strong> Keep your back straight, chest up, and bar close to your body throughout the movement.</p>
+                </div>
+                
+                <div class="exercise-card">
+                    <div class="exercise-name">Bulgarian Split Squat</div>
+                    <p><strong>Setup:</strong> Stand about two feet in front of a bench. Extend one leg back and place the top of your foot on the bench.</p>
+                    <p><strong>Execution:</strong> Lower your body by bending your front knee until your thigh is parallel to the floor. Push through your front heel to return to the starting position.</p>
+                    <p><strong>Cues:</strong> Keep your torso upright, front knee aligned with your ankle, and focus on the stretch in your rear leg's hip flexor.</p>
+                </div>
+                
+                <div class="exercise-card">
+                    <div class="exercise-name">Pull-ups</div>
+                    <p><strong>Setup:</strong> Hang from a pull-up bar with an overhand grip slightly wider than shoulder-width.</p>
+                    <p><strong>Execution:</strong> Pull your body up until your chin clears the bar. Lower yourself with control until your arms are fully extended.</p>
+                    <p><strong>Cues:</strong> Initiate the movement by pulling with your back muscles, keep your core tight, and avoid excessive swinging.</p>
+                </div>
+                
+                <div class="exercise-card">
+                    <div class="exercise-name">Close Grip Bench Press</div>
+                    <p><strong>Setup:</strong> Lie on a flat bench and grip the bar with your hands slightly narrower than shoulder-width.</p>
+                    <p><strong>Execution:</strong> Lower the bar to your lower chest, keeping your elbows tucked close to your body. Press the bar back up to the starting position.</p>
+                    <p><strong>Cues:</strong> Focus on triceps activation, maintain a slight arch in your lower back, and keep your shoulder blades retracted.</p>
+                </div>
+                
+                <div class="exercise-card">
+                    <div class="exercise-name">Dips</div>
+                    <p><strong>Setup:</strong> Support your body on parallel bars with your arms fully extended.</p>
+                    <p><strong>Execution:</strong> Lower your body by bending your elbows until your upper arms are parallel to the floor. Push back up to the starting position.</p>
+                    <p><strong>Cues:</strong> Keep your torso upright, elbows tucked close to your body, and focus on chest and triceps activation.</p>
+                </div>
+                
+                <div class="exercise-card">
+                    <div class="exercise-name">Cable Lateral Raises</div>
+                    <p><strong>Setup:</strong> Stand with your side to a cable pulley, holding the handle with your opposite hand.</p>
+                    <p><strong>Execution:</strong> Raise your arm out to your side until it reaches shoulder height. Lower with control to the starting position.</p>
+                    <p><strong>Cues:</strong> Keep a slight bend in your elbow, focus on medial deltoid activation, and avoid using momentum.</p>
+                </div>
+                
+                <div class="exercise-card">
+                    <div class="exercise-name">Rear Delt Fly</div>
+                    <p><strong>Setup:</strong> Bend at the hips with a flat back, holding dumbbells in front of you with palms facing each other.</p>
+                    <p><strong>Execution:</strong> Raise the dumbbells out to your sides until they reach shoulder height. Lower with control to the starting position.</p>
+                    <p><strong>Cues:</strong> Keep your elbows slightly bent, focus on rear deltoid activation, and avoid using momentum.</p>
+                </div>
+                
+                <div class="exercise-card">
+                    <div class="exercise-name">Shrugs</div>
+                    <p><strong>Setup:</strong> Stand with feet shoulder-width apart, holding dumbbells or a barbell in front of you.</p>
+                    <p><strong>Execution:</strong> Elevate your shoulders straight up toward your ears. Lower with control to the starting position.</p>
+                    <p><strong>Cues:</strong> Keep your arms straight, focus on trap activation, and avoid rolling your shoulders.</p>
+                </div>
+                
+                <div class="exercise-card">
+                    <div class="exercise-name">Leg Press</div>
+                    <p><strong>Setup:</strong> Sit in the leg press machine with your feet shoulder-width apart on the platform.</p>
+                    <p><strong>Execution:</strong> Lower the platform by bending your knees until they reach a 90-degree angle. Push through your heels to extend your legs.</p>
+                    <p><strong>Cues:</strong> Keep your lower back pressed against the pad, avoid locking your knees at the top, and focus on quad activation.</p>
+                </div>
+                
+                <div class="exercise-card">
+                    <div class="exercise-name">Dumbbell Row</div>
+                    <p><strong>Setup:</strong> Place one knee and hand on a bench, holding a dumbbell in your other hand with your arm fully extended.</p>
+                    <p><strong>Execution:</strong> Pull the dumbbell toward your hip, keeping your elbow close to your body. Lower with control to the starting position.</p>
+                    <p><strong>Cues:</strong> Keep your back flat, focus on lat activation, and avoid using momentum.</p>
+                </div>
+                
+                <div class="exercise-card">
+                    <div class="exercise-name">Lying Hamstring Curl</div>
+                    <p><strong>Setup:</strong> Lie face down on a hamstring curl machine with the pad positioned just above your heels.</p>
+                    <p><strong>Execution:</strong> Curl your legs toward your glutes by contracting your hamstrings. Lower with control to the starting position.</p>
+                    <p><strong>Cues:</strong> Keep your hips pressed against the pad, focus on hamstring activation, and avoid using momentum.</p>
+                </div>
+                
+                <div class="exercise-card">
+                    <div class="exercise-name">Cable Crunches</div>
+                    <p><strong>Setup:</strong> Kneel in front of a cable pulley, holding the rope attachment behind your head.</p>
+                    <p><strong>Execution:</strong> Crunch forward by flexing your spine, bringing your elbows toward your knees. Return to the starting position with control.</p>
+                    <p><strong>Cues:</strong> Focus on abdominal contraction, keep your hips stationary, and avoid pulling with your arms.</p>
+                </div>
+                
+                <div class="exercise-card">
+                    <div class="exercise-name">Leg Raises</div>
+                    <p><strong>Setup:</strong> Lie on your back with your hands under your lower back for support.</p>
+                    <p><strong>Execution:</strong> Raise your legs until they're perpendicular to the floor. Lower with control until they're just above the ground.</p>
+                    <p><strong>Cues:</strong> Keep your lower back pressed against the floor, focus on lower abdominal activation, and avoid using momentum.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="recovery">
+            <h2 class="section-title">Recovery Protocols</h2>
+            
+            <div class="info-box">
+                <div class="info-box-title">Why Recovery Matters</div>
+                <p>Recovery is when your body actually adapts and becomes stronger. Without proper recovery, you won't make optimal progress and increase your risk of injury. This is especially important for your high-frequency training schedule.</p>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-bed"></i>Sleep Optimization</h3>
+                <p>Sleep is the most powerful recovery tool available to you. During sleep, your body releases growth hormone and repairs muscle tissue.</p>
+                
+                <h4>Sleep Recommendations:</h4>
+                <ul>
+                    <li><strong>Duration:</strong> Aim for 7-9 hours per night, especially on training days</li>
+                    <li><strong>Consistency:</strong> Go to bed and wake up at the same time daily, even on weekends</li>
+                    <li><strong>Environment:</strong> Keep your bedroom cool (65-68°F), dark, and quiet</li>
+                    <li><strong>Pre-sleep routine:</strong> Avoid screens for 1 hour before bed, consider reading or light stretching</li>
+                    <li><strong>Caffeine:</strong> No caffeine after 2 PM to prevent sleep interference</li>
+                </ul>
+                
+                <div class="success-box">
+                    <div class="info-box-title">Sleep Tracking</div>
+                    <p>Consider using a sleep tracking app or device to monitor your sleep quality and duration. This can help you identify patterns and make adjustments to optimize recovery.</p>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-spa"></i>Active Recovery</h3>
+                <p>Active recovery involves low-intensity activity that promotes blood flow and aids recovery without adding fatigue.</p>
+                
+                <h4>Active Recovery Recommendations:</h4>
+                <ul>
+                    <li><strong>Light cardio:</strong> 20-30 minutes of walking, cycling, or elliptical</li>
+                    <li><strong>Mobility work:</strong> 15-20 minutes focused on hips, thoracic spine, and shoulders</li>
+                    <li><strong>Foam rolling:</strong> 10 minutes targeting tight muscles, especially lower back</li>
+                    <li><strong>Stretching:</strong> 10-15 minutes of static stretching for major muscle groups</li>
+                </ul>
+                
+                <h4>Active Recovery Schedule:</h4>
+                <ul>
+                    <li>Rest days (Day 4): 30 minutes light walking + 15 minutes mobility work</li>
+                    <li>Morning of training days: 10 minutes foam rolling + 5 minutes dynamic stretching</li>
+                    <li>Evening of training days: 10 minutes static stretching</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-hot-tub"></i>Recovery Techniques</h3>
+                
+                <h4>Lower Back Specific Recovery:</h4>
+                <p>Given your concern about lower back recovery between deadlift sessions, implement these specific protocols:</p>
+                <ul>
+                    <li><strong>Cat-cow stretches:</strong> 2 sets of 10 reps daily</li>
+                    <li><strong>Child's pose:</strong> 2 sets of 30-second holds daily</li>
+                    <li><strong>Glute bridges:</strong> 2 sets of 15 reps daily (activates glutes, reduces lower back compensation)</li>
+                    <li><strong>Clamshells:</strong> 2 sets of 15 reps per side daily</li>
+                    <li><strong>Heat therapy:</strong> Apply heat to lower back for 15-20 minutes after deadlift sessions</li>
+                </ul>
+                
+                <h4>Shoulder Rehab Support:</h4>
+                <ul>
+                    <li><strong>Band pull-aparts:</strong> 2 sets of 15 reps daily</li>
+                    <li><strong>Face pulls:</strong> 2 sets of 15 reps daily</li>
+                    <li><strong>External rotation:</strong> 2 sets of 12 reps per side daily</li>
+                    <li><strong>Scapular wall slides:</strong> 2 sets of 10 reps daily</li>
+                </ul>
+                
+                <h4>Contrast Showers:</h4>
+                <p>Alternate between hot and cold water (30 seconds each, 3-5 rounds) after intense training sessions. This may help reduce inflammation and improve recovery.</p>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-brain"></i>Stress Management</h3>
+                <p>Chronic stress elevates cortisol levels, which can impair recovery and muscle growth. Managing stress is crucial for optimal progress.</p>
+                
+                <h4>Stress Management Techniques:</h4>
+                <ul>
+                    <li><strong>Meditation:</strong> 5-10 minutes daily using apps like Headspace or Calm</li>
+                    <li><strong>Deep breathing:</strong> 5 minutes of diaphragmatic breathing before bed</li>
+                    <li><strong>Nature exposure:</strong> Spend time outdoors when possible</li>
+                    <li><strong>Social connection:</strong> Maintain relationships with friends and family</li>
+                    <li><strong>Hobbies:</strong> Engage in non-training activities you enjoy</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="nutrition">
+            <h2 class="section-title">Nutrition Guidelines</h2>
+            
+            <div class="info-box">
+                <div class="info-box-title">Nutrition Fundamentals</div>
+                <p>Nutrition is the foundation of recovery and strength development. Without proper nutrition, your body won't have the resources to adapt to training and build strength.</p>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-drumstick-bite"></i>Protein Requirements</h3>
+                <p>Protein is essential for muscle repair and growth. Based on your current intake (160-180g daily), you're already in a good range, but distribution throughout the day can be optimized.</p>
+                
+                <h4>Protein Recommendations:</h4>
+                <ul>
+                    <li><strong>Total daily intake:</strong> 160-180g (0.8-1.0g per pound of body weight)</li>
+                    <li><strong>Distribution:</strong> 20-30g every 3-4 hours across 4-6 meals/snacks</li>
+                    <li><strong>Quality sources:</strong> Lean meats, fish, eggs, dairy, legumes, and quality protein supplements</li>
+                    <li><strong>Timing:</strong> 20-30g within 60 minutes before and after training</li>
+                </ul>
+                
+                <h4>Protein Distribution Example:</h4>
+                <ul>
+                    <li>Breakfast: 30g protein (eggs, Greek yogurt, or protein shake)</li>
+                    <li>Lunch: 30g protein (chicken, fish, or tofu)</li>
+                    <li>Pre-workout: 20g protein (protein shake or Greek yogurt)</li>
+                    <li>Post-workout: 30g protein (protein shake or lean meat)</li>
+                    <li>Dinner: 30g protein (lean meat, fish, or legumes)</li>
+                    <li>Before bed: 20g protein (casein protein shake or cottage cheese)</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-bread-slice"></i>Carbohydrate Requirements</h3>
+                <p>Carbohydrates fuel your training and replenish glycogen stores. Your needs will vary based on training volume and intensity.</p>
+                
+                <h4>Carbohydrate Recommendations:</h4>
+                <ul>
+                    <li><strong>Total daily intake:</strong> 2-3g per pound of body weight (330-500g)</li>
+                    <li><strong>Timing:</strong> 30-50g 60-90 minutes before training</li>
+                    <li><strong>Post-workout:</strong> 40-60g within 60 minutes after training</li>
+                    <li><strong>Quality sources:</strong> Whole grains, fruits, vegetables, and starchy carbohydrates</li>
+                </ul>
+                
+                <h4>Carbohydrate Timing Strategy:</h4>
+                <ul>
+                    <li><strong>Training days:</strong> Higher carbohydrate intake, especially around training sessions</li>
+                    <li><strong>Rest days:</strong> Moderate carbohydrate intake, focusing on vegetables and fruits</li>
+                    <li><strong>Intense training days:</strong> 60% of daily carbohydrates consumed before and after training</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-tint"></i>Hydration</h3>
+                <p>Proper hydration is essential for performance and recovery. Even mild dehydration can impair strength and power output.</p>
+                
+                <h4>Hydration Recommendations:</h4>
+                <ul>
+                    <li><strong>Daily intake:</strong> 3-4 liters (100-135oz) of water</li>
+                    <li><strong>Training days:</strong> Additional 16-20oz during training sessions</li>
+                    <li><strong>Monitoring:</strong> Urine should be pale yellow (not clear or dark)</li>
+                    <li><strong>Electrolytes:</strong> Consider electrolyte supplementation during intense training or in hot environments</li>
+                </ul>
+                
+                <h4>Hydration Schedule:</h4>
+                <ul>
+                    <li>Upon waking: 16oz water</li>
+                    <li>Before training: 16oz water</li>
+                    <li>During training: 8-10oz every 15 minutes</li>
+                    <li>After training: 16-20oz water</li>
+                    <li>Throughout the day: Sip water consistently</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-pills"></i>Supplements</h3>
+                <p>While not essential, certain supplements can support your training and recovery. Focus on the basics first.</p>
+                
+                <h4>Recommended Supplements:</h4>
+                <ul>
+                    <li><strong>Protein powder:</strong> Convenient way to meet protein requirements, especially around training</li>
+                    <li><strong>Creatine monohydrate:</strong> 5g daily to support strength and power output</li>
+                    <li><strong>Fish oil:</strong> 2-3g daily to reduce inflammation and support recovery</li>
+                    <li><strong>Vitamin D:</strong> 2000-5000 IU daily, especially if you have limited sun exposure</li>
+                    <li><strong>Magnesium:</strong> 400mg before bed to support sleep and recovery</li>
+                </ul>
+                
+                <h4>Optional Supplements:</h4>
+                <ul>
+                    <li><strong>BCAAs:</strong> May be beneficial during fasted training, but not essential if protein intake is adequate</li>
+                    <li><strong>Beta-alanine:</strong> 3-5g daily to support high-intensity performance</li>
+                    <li><strong>Citrulline malate:</strong> 6-8g before training to improve blood flow</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h3 class="card-title"><i class="fas fa-weight"></i>Body Composition</h3>
+                <p>At 165-168lbs, you're at a good weight for strength development. Focus on maintaining this weight while improving strength and body composition.</p>
+                
+                <h4>Body Composition Recommendations:</h4>
+                <ul>
+                    <li><strong>Calorie intake:</strong> Maintenance calories (approximately 2500-2800 calories daily)</li>
+                    <li><strong>Macronutrient ratio:</strong> 30% protein, 40% carbohydrates, 30% fat</li>
+                    <li><strong>Monitoring:</strong> Weigh yourself 2-3 times per week and track average</li>
+                    <li><strong>Adjustments:</strong> Increase calories by 200-300 if you're losing weight, decrease by the same amount if gaining fat</li>
+                </ul>
+                
+                <h4>Body Composition Tracking:</h4>
+                <ul>
+                    <li><strong>Weight:</strong> Track 2-3 times per week, calculate weekly average</li>
+                    <li><strong>Progress photos:</strong> Take monthly front, side, and back photos</li>
+                    <li><strong>Measurements:</strong> Track waist, chest, arms, and thigh measurements monthly</li>
+                    <li><strong>Strength progress:</strong> Track your main lift performance weekly</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 MyDailyAgency Strength Program. Designed for optimal strength development and recovery.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Load saved 1RM values if they exist
+        window.onload = function() {
+            const savedFrontSquat = localStorage.getItem('frontSquatMax');
+            const savedBenchPress = localStorage.getItem('benchPressMax');
+            const savedDeadlift = localStorage.getItem('deadliftMax');
+            
+            if (savedFrontSquat) {
+                document.getElementById('frontSquatMax').value = savedFrontSquat;
+            }
+            if (savedBenchPress) {
+                document.getElementById('benchPressMax').value = savedBenchPress;
+            }
+            if (savedDeadlift) {
+                document.getElementById('deadliftMax').value = savedDeadlift;
+            }
+            
+            // Update the program with saved values
+            updateProgram();
+            
+            // Add print button
+            const printButton = document.createElement('button');
+            printButton.innerHTML = '<i class="fas fa-print"></i> Print Program';
+            printButton.className = 'btn';
+            printButton.style.position = 'fixed';
+            printButton.style.bottom = '20px';
+            printButton.style.right = '20px';
+            printButton.style.zIndex = '1000';
+            printButton.onclick = printProgram;
+            document.body.appendChild(printButton);
+        };
+
+        // Tab functionality
+        function openTab(evt, tabName) {
+            var i, tabcontent, tabs;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].classList.remove("active");
+            }
+            tabs = document.getElementsByClassName("tab");
+            for (i = 0; i < tabs.length; i++) {
+                tabs[i].classList.remove("active");
+            }
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+
+        // Update program based on 1RM inputs
+        function updateProgram() {
+            const frontSquatMax = parseFloat(document.getElementById('frontSquatMax').value) || 315;
+            const benchPressMax = parseFloat(document.getElementById('benchPressMax').value) || 275;
+            const deadliftMax = parseFloat(document.getElementById('deadliftMax').value) || 505;
+            
+            // Save values to localStorage
+            localStorage.setItem('frontSquatMax', frontSquatMax);
+            localStorage.setItem('benchPressMax', benchPressMax);
+            localStorage.setItem('deadliftMax', deadliftMax);
+            
+            // Update Week 1-3 weights
+            document.getElementById('w1d1-top').textContent = Math.round(frontSquatMax * 0.71) + 'lbs (71% of 1RM)';
+            document.getElementById('w1d1-backdown').textContent = Math.round(frontSquatMax * 0.71 * 0.9) + 'lbs (90% of top set)';
+            document.getElementById('w1d2-top').textContent = Math.round(benchPressMax * 0.75) + 'lbs (75% of 1RM)';
+            document.getElementById('w1d2-backdown').textContent = Math.round(benchPressMax * 0.75 * 0.9) + 'lbs (90% of top set)';
+            document.getElementById('w1d3-top').textContent = Math.round(deadliftMax * 0.72) + 'lbs (72% of 1RM)';
+            document.getElementById('w1d3-backdown').textContent = Math.round(deadliftMax * 0.72 * 0.9) + 'lbs (90% of top set)';
+            document.getElementById('w1d5-volume').textContent = Math.round(frontSquatMax * 0.65) + 'lbs (65% of 1RM)';
+            document.getElementById('w1d6-volume').textContent = Math.round(benchPressMax * 0.69) + 'lbs (69% of 1RM)';
+            document.getElementById('w1d7-volume').textContent = Math.round(deadliftMax * 0.66) + 'lbs (66% of 1RM)';
+            
+            // Update Week 4 weights (40% reduction)
+            document.getElementById('w4d1-top').textContent = Math.round(frontSquatMax * 0.71 * 0.6) + 'lbs (40% reduction)';
+            document.getElementById('w4d1-backdown').textContent = Math.round(frontSquatMax * 0.71 * 0.6 * 0.9) + 'lbs (40% reduction)';
+            document.getElementById('w4d2-top').textContent = Math.round(benchPressMax * 0.75 * 0.6) + 'lbs (40% reduction)';
+            document.getElementById('w4d2-backdown').textContent = Math.round(benchPressMax * 0.75 * 0.6 * 0.9) + 'lbs (40% reduction)';
+            document.getElementById('w4d3-top').textContent = Math.round(deadliftMax * 0.72 * 0.6) + 'lbs (40% reduction)';
+            document.getElementById('w4d3-backdown').textContent = Math.round(deadliftMax * 0.72 * 0.6 * 0.9) + 'lbs (40% reduction)';
+            document.getElementById('w4d5-volume').textContent = Math.round(frontSquatMax * 0.65 * 0.6) + 'lbs (40% reduction)';
+            document.getElementById('w4d6-volume').textContent = Math.round(benchPressMax * 0.69 * 0.6) + 'lbs (40% reduction)';
+            document.getElementById('w4d7-volume').textContent = Math.round(deadliftMax * 0.66 * 0.6) + 'lbs (40% reduction)';
+            
+            // Update Week 5-7 weights
+            document.getElementById('w5d1-top').textContent = Math.round(frontSquatMax * 0.78) + 'lbs (78% of 1RM)';
+            document.getElementById('w5d1-backdown').textContent = Math.round(frontSquatMax * 0.78 * 0.9) + 'lbs (90% of top set)';
+            document.getElementById('w5d2-top').textContent = Math.round(benchPressMax * 0.82) + 'lbs (82% of 1RM)';
+            document.getElementById('w5d2-backdown').textContent = Math.round(benchPressMax * 0.82 * 0.9) + 'lbs (90% of top set)';
+            document.getElementById('w5d3-top').textContent = Math.round(deadliftMax * 0.80) + 'lbs (80% of 1RM)';
+            document.getElementById('w5d3-backdown').textContent = Math.round(deadliftMax * 0.80 * 0.9) + 'lbs (90% of top set)';
+            document.getElementById('w5d5-volume').textContent = Math.round(frontSquatMax * 0.71) + 'lbs (71% of 1RM)';
+            document.getElementById('w5d6-volume').textContent = Math.round(benchPressMax * 0.75) + 'lbs (75% of 1RM)';
+            document.getElementById('w5d7-volume').textContent = Math.round(deadliftMax * 0.72) + 'lbs (72% of 1RM)';
+            
+            // Update Week 8 weights (40% reduction)
+            document.getElementById('w8d1-top').textContent = Math.round(frontSquatMax * 0.78 * 0.6) + 'lbs (40% reduction)';
+            document.getElementById('w8d1-backdown').textContent = Math.round(frontSquatMax * 0.78 * 0.6 * 0.9) + 'lbs (40% reduction)';
+            document.getElementById('w8d2-top').textContent = Math.round(benchPressMax * 0.82 * 0.6) + 'lbs (40% reduction)';
+            document.getElementById('w8d2-backdown').textContent = Math.round(benchPressMax * 0.82 * 0.6 * 0.9) + 'lbs (40% reduction)';
+            document.getElementById('w8d3-top').textContent = Math.round(deadliftMax * 0.80 * 0.6) + 'lbs (40% reduction)';
+            document.getElementById('w8d3-backdown').textContent = Math.round(deadliftMax * 0.80 * 0.6 * 0.9) + 'lbs (40% reduction)';
+            document.getElementById('w8d5-volume').textContent = Math.round(frontSquatMax * 0.71 * 0.6) + 'lbs (40% reduction)';
+            document.getElementById('w8d6-volume').textContent = Math.round(benchPressMax * 0.75 * 0.6) + 'lbs (40% reduction)';
+            document.getElementById('w8d7-volume').textContent = Math.round(deadliftMax * 0.72 * 0.6) + 'lbs (40% reduction)';
+            
+            // Update Week 9-11 weights
+            document.getElementById('w9d1-top').textContent = Math.round(frontSquatMax * 0.84) + 'lbs (84% of 1RM)';
+            document.getElementById('w9d1-backdown').textContent = Math.round(frontSquatMax * 0.84 * 0.9) + 'lbs (90% of top set)';
+            document.getElementById('w9d2-top').textContent = Math.round(benchPressMax * 0.89) + 'lbs (89% of 1RM)';
+            document.getElementById('w9d2-backdown').textContent = Math.round(benchPressMax * 0.89 * 0.9) + 'lbs (90% of top set)';
+            document.getElementById('w9d3-top').textContent = Math.round(deadliftMax * 0.88) + 'lbs (88% of 1RM)';
+            document.getElementById('w9d3-backdown').textContent = Math.round(deadliftMax * 0.88 * 0.9) + 'lbs (90% of top set)';
+            document.getElementById('w9d5-volume').textContent = Math.round(frontSquatMax * 0.78) + 'lbs (78% of 1RM)';
+            document.getElementById('w9d6-volume').textContent = Math.round(benchPressMax * 0.82) + 'lbs (82% of 1RM)';
+            document.getElementById('w9d7-volume').textContent = Math.round(deadliftMax * 0.80) + 'lbs (80% of 1RM)';
+            
+            // Show success message
+            const messageDiv = document.getElementById('updateMessage');
+            messageDiv.innerHTML = '<div class="success-box"><div class="info-box-title">Success!</div><p>Program updated with your 1RM values: Front Squat: ' + frontSquatMax + 'lbs, Bench Press: ' + benchPressMax + 'lbs, Deadlift: ' + deadliftMax + 'lbs</p></div>';
+            messageDiv.style.display = 'block';
+            
+            // Hide message after 3 seconds
+            setTimeout(function() {
+                messageDiv.style.display = 'none';
+            }, 3000);
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Print functionality
+        function printProgram() {
+            window.print();
+        }
+    </script>
+</body>
+</html>
